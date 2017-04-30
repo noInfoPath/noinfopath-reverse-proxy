@@ -1,6 +1,6 @@
 # NoInfoPath Proxy Server
 
-A simple reverse proxy server build on Redbird.
+A simple reverse proxy server built on Redbird.
 
 ## Configuration sample
 
