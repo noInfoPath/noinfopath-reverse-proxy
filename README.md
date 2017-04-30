@@ -49,5 +49,7 @@ debug configuration. Otherwise "prod" is used by default.
 
 - Add full SSL support.
 - Better documentation.
-- NodeJitsu support
+- NodeJitsu support.
+- Docker Image.
+
 
