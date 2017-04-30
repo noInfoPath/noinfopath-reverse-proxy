@@ -1,4 +1,4 @@
-var platform = process.env.IMGDEV || "prod",
+var platform = process.env.NOINFOPATHDEBUG || "prod",
 	config = require("./config")[platform],
 	proxy = require('redbird')({port: config.inboundPort});
 
