@@ -48,3 +48,6 @@ debug configuration. Otherwise "prod" is used by default.
 ## Roadmap
 
 - Add full SSL support.
+- Better documentation.
+- NodeJitsu support
+
