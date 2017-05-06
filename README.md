@@ -24,6 +24,9 @@ suggested in this Stack Overflow article. [How to resolve all .dev domains to lo
 
 ### Create/Edit config.json for a project.
 
+> Create an environment variable called NOINFOPATHDEBUG = "debug" to use the
+debug configuration. Otherwise "prod" is used by default.
+
 ```json
 {
 	"debug": {
@@ -42,11 +45,20 @@ suggested in this Stack Overflow article. [How to resolve all .dev domains to lo
 				"dest": "http://localhost:3000"
 			}
 		]
+	},
+	"prod": {
+		
 	}
 }
-
 ```
 
 ### Product Servers
 
 > TODO: Write production configuration instructions.
+
+## Roadmap
+
+- Add full SSL support.
+- Better documentation.
+- NodeJitsu support.
+- Docker Image.
