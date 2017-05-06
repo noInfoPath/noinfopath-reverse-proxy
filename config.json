@@ -24,7 +24,12 @@
 		"inboundPort": 80,
 		"proxies": [{
 				"source": "restapi.sop.heavensentlegal.com",
-				"dest": "http://localhost:3002"
+				"dest": "http://localhost:3002",
+				"ssl": {
+					"port": 443,
+					"key": "../hsl-sop-restapi/.certs/restapi.sop.heavensentlegal.com.key",
+					"cert": "../hsl-sop-restapi/.certs/restapi.sop.heavensentlegal.com.crt"
+				}
 			},
 			{
 				"source": "app.sop.heavensentlegal.com",
