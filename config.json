@@ -33,11 +33,11 @@
 			},
 			{
 				"source": "app.sop.heavensentlegal.com",
-				"dest": "http://localhost:3000"
+				"dest": "http://localhost:3001"
 			},
 			{
 				"source": "service.sop.heavensentlegal.com",
-				"dest": "http://localhost:3001"
+				"dest": "http://localhost:3000"
 			}
 		]
 	}
