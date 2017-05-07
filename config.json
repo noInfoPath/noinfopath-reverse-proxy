@@ -2,7 +2,7 @@
 	"debug": {
 		"redbird": {
 			"init": {
-				"inboundPort": 8080,
+				"port": 8080,
 				"ssl": {
 					"port": 8443,
 					"key": ".certs/hsl.test.key",
@@ -30,12 +30,14 @@
 	"prod": {
 		"redbird": {
 			"init": {
-				"inboundPort": 80,
+				"port": 80,
 				"ssl": {
 					"port": 443
 				},
 				"letsencrypt": {
-					"path": ".certs"
+					"path": ".certs",
+					"port": 9999,
+					"production": true
 				}
 			},
 			"proxies": [{
@@ -45,7 +47,7 @@
 						"ssl": {
 							"letsencrypt": {
 								"email": "hsl.service.requests@gmail.com",
-								"production": false,
+								"production": true,
 								"port": 9999
 							}
 						}
@@ -58,7 +60,7 @@
 						"ssl": {
 							"letsencrypt": {
 								"email": "hsl.service.requests@gmail.com",
-								"production": false,
+								"production": true,
 								"port": 9999
 							}
 						}
@@ -71,7 +73,7 @@
 						"ssl": {
 							"letsencrypt": {
 								"email": "hsl.service.requests@gmail.com",
-								"production": false,
+								"production": true,
 								"port": 9999
 							}
 						}
