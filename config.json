@@ -1,44 +1,83 @@
 {
 	"debug": {
-		"inboundPort": 8080,
-		"ssl": {
-			"port": 8443,
-			"key": ".certs/hsl.test.key",
-			"cert": ".certs/hsl.test.crt"
-		},
-		"proxies": [{
-				"source": "restapi.sop.hsl.test",
-				"dest": "http://localhost:3002"
-			},
-			{
-				"source": "app.sop.hsl.test",
-				"dest": "http://localhost:3000"
-			},
-			{
-				"source": "service.sop.hsl.test",
-				"dest": "http://localhost:3001"
-			}
-		]
-	},
-	"prod": {
-		"inboundPort": 80,
-		"proxies": [{
-				"source": "restapi.sop.heavensentlegal.com",
-				"dest": "http://localhost:3002",
+		"redbird": {
+			"init": {
+				"inboundPort": 8080,
 				"ssl": {
-					"port": 443,
-					"key": "../hsl-sop-restapi/.certs/restapi.sop.heavensentlegal.com.key",
-					"cert": "../hsl-sop-restapi/.certs/restapi.sop.heavensentlegal.com.crt"
+					"port": 8443,
+					"key": ".certs/hsl.test.key",
+					"cert": ".certs/hsl.test.crt"
 				}
 			},
-			{
-				"source": "app.sop.heavensentlegal.com",
-				"dest": "http://localhost:3001"
+			"proxies": [{
+					"source": "restapi.sop.hsl.test",
+					"dest": "http://localhost:3002",
+					"options": {}
+				},
+				{
+					"source": "app.sop.hsl.test",
+					"dest": "http://localhost:3000",
+					"options": {}
+				},
+				{
+					"source": "service.sop.hsl.test",
+					"dest": "http://localhost:3001",
+					"options": {}
+				}
+			]
+		}
+	},
+	"prod": {
+		"redbird": {
+			"init": {
+				"inboundPort": 80,
+				"ssl": {
+					"port": 443
+				},
+				"letsencrypt": {
+					"path": ".certs"
+				}
 			},
-			{
-				"source": "service.sop.heavensentlegal.com",
-				"dest": "http://localhost:3000"
-			}
-		]
+			"proxies": [{
+					"source": "restapi.sop.heavensentlegal.com",
+					"dest": "http://localhost:3002",
+					"options": {
+						"ssl": {
+							"letsencrypt": {
+								"email": "hsl.service.requests@gmail.com",
+								"production": false,
+								"port": 9999
+							}
+						}
+					}
+				},
+				{
+					"source": "app.sop.heavensentlegal.com",
+					"dest": "http://localhost:3001",
+					"options": {
+						"ssl": {
+							"letsencrypt": {
+								"email": "hsl.service.requests@gmail.com",
+								"production": false,
+								"port": 9999
+							}
+						}
+					}
+				},
+				{
+					"source": "service.sop.heavensentlegal.com",
+					"dest": "http://localhost:3000",
+					"options": {
+						"ssl": {
+							"letsencrypt": {
+								"email": "hsl.service.requests@gmail.com",
+								"production": false,
+								"port": 9999
+							}
+						}
+					}
+				}
+			]
+		}
 	}
 }
