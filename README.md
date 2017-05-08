@@ -30,21 +30,32 @@ debug configuration. Otherwise "prod" is used by default.
 ```json
 {
 	"debug": {
-		"inboundPort": 8080,
-		"ssl": {
-			"port": 8443,
-			"key": ".certs/foo.test.key",
-			"cert": ".certs/foo.test.crt"
-		},
-		"proxies": [{
-				"source": "restapi.foo.test",
-				"dest": "http://localhost:3002"
+		"redbird": {
+			"init": {
+				"port": 8080,
+				"ssl": {
+					"port": 8443,
+					"key": ".certs/hsl.test.key",
+					"cert": ".certs/hsl.test.crt"
+				}
 			},
-			{
-				"source": "www.foo.test",
-				"dest": "http://localhost:3000"
-			}
-		]
+			"proxies": [{
+					"source": "restapi.sop.hsl.test",
+					"dest": "http://localhost:3002",
+					"options": {}
+				},
+				{
+					"source": "app.sop.hsl.test",
+					"dest": "http://localhost:3000",
+					"options": {}
+				},
+				{
+					"source": "service.sop.hsl.test",
+					"dest": "http://localhost:3001",
+					"options": {}
+				}
+			]
+		}
 	},
 	"prod": {
 		
