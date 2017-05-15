@@ -1,49 +1,71 @@
-# NoInfoPath Proxy Server
+# NoInfoPath Reverse Proxy
 
-A simple reverse proxy server built on Redbird.
+## Overview
 
-## Configuration sample
+The NoInfoPath Reverse Proxy is an implementation of RedBird. See [RedBird Project README](https://github.com/OptimalBits/redbird/blob/master/README.md)
+for configuration details.
 
-In this example we added the source host names to the /etc/hosts file. Also,
-set an environment variable called NOINFOPATHDEBUG = "debug" to use the
+NoInfoPath adds a simple configuration file to make setting project quick and easy.
+
+## Configuration
+
+### Development Computers
+
+#### OSX and Linux Configuration
+* [Configure OSX for Development SSL](https://gist.github.com/jed/6147872)
+
+#### Windows
+
+> NOTE: For Windows you will need to either create entries for each host in your
+\\windows\\system32\\drivers\\etc\\hosts file. Alternately you could try what is
+suggested in this Stack Overflow article. [How to resolve all .dev domains to localhost on Windows](https://serverfault.com/questions/539591/how-to-resolve-all-dev-domains-to-localhost-on-windows)
+
+* [Howto: Make Your Own Cert With OpenSSL on Windows](https://blog.didierstevens.com/2015/03/30/howto-make-your-own-cert-with-openssl-on-windows/)
+
+### Create/Edit config.json for a project.
+
+> Create an environment variable called NOINFOPATHDEBUG = "debug" to use the
 debug configuration. Otherwise "prod" is used by default.
 
 ```json
 {
 	"debug": {
-		"inboundPort": 8080,
-		"proxies": [{
-				"source": "rest.foobar.com",
-				"dest": "http://localhost:4000"
+		"redbird": {
+			"init": {
+				"port": 8080,
+				"ssl": {
+					"port": 8443,
+					"key": ".certs/hsl.test.key",
+					"cert": ".certs/hsl.test.crt"
+				}
 			},
-			{
-				"source": "app.foobar.com",
-				"dest": "http://localhost:3000"
-			},
-			{
-				"source": "service.foobar.com",
-				"dest": "http://localhost:3001"
-			}
-		]
+			"proxies": [{
+					"source": "restapi.sop.hsl.test",
+					"dest": "http://localhost:3002",
+					"options": {}
+				},
+				{
+					"source": "app.sop.hsl.test",
+					"dest": "http://localhost:3000",
+					"options": {}
+				},
+				{
+					"source": "service.sop.hsl.test",
+					"dest": "http://localhost:3001",
+					"options": {}
+				}
+			]
+		}
 	},
 	"prod": {
-		"inboundPort": 80,
-		"proxies": [{
-				"source": "restapi.myco.com",
-				"dest": "http://localhost:4000"
-			},
-			{
-				"source": "app.myco.com",
-				"dest": "http://localhost:3000"
-			},
-			{
-				"source": "service.myco.com",
-				"dest": "http://localhost:3001"
-			}
-		]
+		
 	}
 }
 ```
+
+### Product Servers
+
+> TODO: Write production configuration instructions.
 
 ## Roadmap
 
@@ -51,5 +73,3 @@ debug configuration. Otherwise "prod" is used by default.
 - Better documentation.
 - NodeJitsu support.
 - Docker Image.
-
-

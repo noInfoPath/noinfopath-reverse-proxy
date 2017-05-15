@@ -1,9 +1,10 @@
 var platform = process.env.NOINFOPATHDEBUG || "prod",
 	config = require("./config")[platform],
-	proxy = require('redbird')({port: config.inboundPort});
+	proxy = require('redbird')(config.redbird.init);
 
+console.log("Start NoInfoPath Reverse Proxy in ", platform);
 
-// Route to any local ip, for example from docker containers.
-config.proxies.forEach(function(prx){
-	proxy.register(prx.source, prx.dest);
+//Create proxy for each item in the config.json file.
+config.redbird.proxies.forEach(function (prx) {
+	proxy.register(prx.source, prx.dest, prx.options);
 });

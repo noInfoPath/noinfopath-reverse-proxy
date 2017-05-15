@@ -2,24 +2,92 @@
 	"debug": {
 		"redbird": {
 			"init": {
-				"port": 80,
+				"port": 8080,
 				"ssl": {
-					"port": 443,
-					"key": ".certs\\key-20170508-095633.pem",
-					"cert": ".certs\\cert-20170508-095633.crt"
+					"port": 8443
 				}
 			},
 			"proxies": [{
 					"source": "restapi.sop.hsl.test",
-					"dest": "http://localhost:3002"
+					"dest": "http://localhost:3002",
+					"options": {
+						"ssl":{
+							"port": 8443,
+							"key": ".certs/hsl.test.key",
+							"cert": ".certs/hsl.test.crt",
+							"ca": ".certs/hsl.test.crt"
+						}
+					}
 				},
 				{
 					"source": "app.sop.hsl.test",
-					"dest": "http://localhost:3000"
+					"dest": "http://localhost:3000",
+					"options": {
+						"ssl":{
+							"port": 8443,
+							"key": ".certs/hsl.test.key",
+							"cert": ".certs/hsl.test.crt"
+						}
+					}
 				},
 				{
 					"source": "service.sop.hsl.test",
-					"dest": "http://localhost:3001"
+					"dest": "http://localhost:3001",
+					"options": {
+						"ssl":{
+							"port": 8443,
+							"key": ".certs/hsl.test.key",
+							"cert": ".certs/hsl.test.crt"
+						}
+					}
+				},
+				{
+					"source": "app.efr.rm.test",
+					"dest": "http://localhost:4000",
+					"options": {
+						"ssl":{
+							"port": 8443,
+							"key": ".certs/efr.rm.key",
+							"cert": ".certs/efr.rm.crt",
+							"ca": ".certs/efr.rm.crt"
+						}
+					}
+				},
+				{
+					"source": "restapi.efr.rm.test",
+					"dest": "http://localhost:4001",
+					"options": {
+						"ssl":{
+							"port": 8443,
+							"key": ".certs/efr.rm.key",
+							"cert": ".certs/efr.rm.crt",
+							"ca": ".certs/efr.rm.crt"
+						}
+					}
+				},
+				{
+					"source": "dtc.efr.rm.test",
+					"dest": "http://localhost:4002",
+					"options": {
+						"ssl":{
+							"port": 8443,
+							"key": ".certs/efr.rm.key",
+							"cert": ".certs/efr.rm.crt",
+							"ca": ".certs/efr.rm.crt"
+						}
+					}
+				},
+				{
+					"source": "beds.efr.rm.test",
+					"dest": "http://localhost:4003",
+					"options": {
+						"ssl":{
+							"port": 8443,
+							"key": ".certs/efr.rm.key",
+							"cert": ".certs/efr.rm.crt",
+							"ca": ".certs/efr.rm.crt"
+						}
+					}
 				}
 			]
 		}
