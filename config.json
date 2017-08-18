@@ -35,7 +35,7 @@
 				},
 				{
 					"source": "service.sop.hsl.test",
-					"dest": "http://localhost:3002",
+					"dest": "http://localhost:3000",
 					"options": {
 						"ssl": {
 							"port": 8443,
