@@ -87,7 +87,7 @@
 					}
 				},
 				{
-					"source": "service.heavensentlegal.com",
+					"source": "service.sop.heavensentlegal.com",
 					"dest": "http://localhost:3000",
 					"options": {
 						"ssl": {
