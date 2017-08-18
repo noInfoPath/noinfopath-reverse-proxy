@@ -6,7 +6,8 @@
 				"ssl": {
 					"port": 8443,
 					"key": ".certs/hsl.test.key",
-					"cert": ".certs/hsl.test.crt"
+					"cert": ".certs/hsl.test.crt",
+					"ca": ".certs/hsl.test.crt"
 				}
 			},
 			"proxies": [{
@@ -16,12 +17,12 @@
 				},
 				{
 					"source": "app.sop.hsl.test",
-					"dest": "http://localhost:3000",
+					"dest": "http://localhost:3001",
 					"options": {"ssl": true}
 				},
 				{
 					"source": "service.sop.hsl.test",
-					"dest": "http://localhost:3001",
+					"dest": "http://localhost:3000",
 					"options": {"ssl": true}
 				}
 			]

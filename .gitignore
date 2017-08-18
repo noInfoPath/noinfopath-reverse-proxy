@@ -1,3 +1,4 @@
 node_modules
 npm_debugger.log
 .certs
+.DS_Store
