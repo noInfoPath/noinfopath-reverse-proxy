@@ -2,3 +2,5 @@ node_modules
 npm_debugger.log
 .certs
 .DS_Store
+config.efr.json
+config.fcfn.json

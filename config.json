@@ -13,17 +13,36 @@
 			"proxies": [{
 					"source": "restapi.sop.hsl.test",
 					"dest": "http://localhost:3002",
-					"options": {"ssl": true}
+					"options": {
+						"ssl": {
+							"port": 8443,
+							"key": ".certs/hsl.test.key",
+							"cert": ".certs/hsl.test.crt",
+							"ca": ".certs/hsl.test.crt"
+						}
+					}
 				},
 				{
 					"source": "app.sop.hsl.test",
 					"dest": "http://localhost:3001",
-					"options": {"ssl": true}
+					"options": {
+						"ssl": {
+							"port": 8443,
+							"key": ".certs/hsl.test.key",
+							"cert": ".certs/hsl.test.crt"
+						}
+					}
 				},
 				{
 					"source": "service.sop.hsl.test",
-					"dest": "http://localhost:3000",
-					"options": {"ssl": true}
+					"dest": "http://localhost:3002",
+					"options": {
+						"ssl": {
+							"port": 8443,
+							"key": ".certs/hsl.test.key",
+							"cert": ".certs/hsl.test.crt"
+						}
+					}
 				}
 			]
 		}
@@ -68,7 +87,7 @@
 					}
 				},
 				{
-					"source": "service.sop.heavensentlegal.com",
+					"source": "service.heavensentlegal.com",
 					"dest": "http://localhost:3000",
 					"options": {
 						"ssl": {
