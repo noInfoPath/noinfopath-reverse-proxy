@@ -9,6 +9,9 @@
   "author": "gochinj",
   "license": "MIT",
   "dependencies": {
-    "redbird": "^0.6.15"
+    "minimist": "^1.2.0",
+    "redbird": "^0.6.15",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
   }
 }
