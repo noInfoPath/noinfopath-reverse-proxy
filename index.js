@@ -1,5 +1,5 @@
 var request = require("request-promise"),
-	fs = require("fs"),
+	fs = require("fs-extra"),
 	args = require('minimist')(process.argv.slice(2)),
 	proxy
 	;
@@ -16,8 +16,12 @@ function resloveConfig(path) {
 				throw err;
 			});
 	} else {
-		console.log("TODO: Handle local file system.");
-		return Promise.resolve({redbird: {proxies: []}})
+		if(fs.existsSync(path)) {
+			var config = fs.readJsonSync(path);
+			return Promise.resolve(config);
+		} else {
+			return Promise.reject(new Error("Configuration not found"));
+		}
 	}
 }
 

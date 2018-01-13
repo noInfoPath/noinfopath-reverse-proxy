@@ -1,6 +1,6 @@
 {
   "name": "noinfopath-reverse-proxy",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Reverse Proxy Server",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,7 @@
   "author": "gochinj",
   "license": "MIT",
   "dependencies": {
+    "fs-extra": "^5.0.0",
     "minimist": "^1.2.0",
     "redbird": "^0.6.15",
     "request": "^2.81.0",
