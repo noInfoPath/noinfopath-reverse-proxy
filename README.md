@@ -5,7 +5,7 @@
 The NoInfoPath Reverse Proxy is an implementation of RedBird. See [RedBird Project README](https://github.com/OptimalBits/redbird/blob/master/README.md)
 for configuration details.
 
-NoInfoPath adds a simple configuration file to make setting project quick and easy.
+NoInfoPath adds a simple configuration file to make setting up projects quick and easy.
 
 ## Configuration
 
