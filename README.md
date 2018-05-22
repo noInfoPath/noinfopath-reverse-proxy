@@ -24,41 +24,53 @@ suggested in this Stack Overflow article. [How to resolve all .dev domains to lo
 
 ### Create/Edit config.json for a project.
 
-> Create an environment variable called NOINFOPATHDEBUG = "debug" to use the
-debug configuration. Otherwise "prod" is used by default.
-
 ```json
 {
-	"debug": {
-		"redbird": {
-			"init": {
-				"port": 8080,
-				"ssl": {
-					"port": 8443,
-					"key": ".certs/hsl.test.key",
-					"cert": ".certs/hsl.test.crt"
+	"redbird": {
+		"init": {
+			"port": 8080,
+			"ssl": {
+				"port": 8443,
+				"key": ".certs/hsl.test.key",
+				"cert": ".certs/hsl.test.crt",
+				"ca": ".certs/hsl.test.crt"
+			}
+		},
+		"proxies": [{
+				"source": "restapi.sop.hsl.test",
+				"dest": "http://localhost:3002",
+				"options": {
+					"ssl": {
+						"port": 8443,
+						"key": ".certs/hsl.test.key",
+						"cert": ".certs/hsl.test.crt",
+						"ca": ".certs/hsl.test.crt"
+					}
 				}
 			},
-			"proxies": [{
-					"source": "restapi.sop.hsl.test",
-					"dest": "http://localhost:3002",
-					"options": {}
-				},
-				{
-					"source": "app.sop.hsl.test",
-					"dest": "http://localhost:3000",
-					"options": {}
-				},
-				{
-					"source": "service.sop.hsl.test",
-					"dest": "http://localhost:3001",
-					"options": {}
+			{
+				"source": "app.sop.hsl.test",
+				"dest": "http://localhost:3001",
+				"options": {
+					"ssl": {
+						"port": 8443,
+						"key": ".certs/hsl.test.key",
+						"cert": ".certs/hsl.test.crt"
+					}
 				}
-			]
-		}
-	},
-	"prod": {
-		
+			},
+			{
+				"source": "service.sop.hsl.test",
+				"dest": "http://localhost:3000",
+				"options": {
+					"ssl": {
+						"port": 8443,
+						"key": ".certs/hsl.test.key",
+						"cert": ".certs/hsl.test.crt"
+					}
+				}
+			}
+		]
 	}
 }
 ```
